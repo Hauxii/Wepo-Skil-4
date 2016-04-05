@@ -10,7 +10,7 @@ window.Game = (function() {
 	var Game = function(el) {
 		this.el = el;
 		this.player = new window.Player(this.el.find('.Player'), this);
-		this.isPlaying = false;
+		this.isPlaying = true;
 
 		// Cache a bound onFrame since we need it each frame.
 		this.onFrame = this.onFrame.bind(this);
@@ -22,20 +22,36 @@ window.Game = (function() {
 	 */
 	Game.prototype.onFrame = function() {
 		// Check if the game loop should stop.
+		
 		if (!this.isPlaying) {
 			return;
 		}
+		//console.log(this);
+		/*
+		if(this.player.hasStarted()){
+			// Calculate how long since last frame in seconds.
+			var now = +new Date() / 1000,
+					delta = now - this.lastFrame;
+			this.lastFrame = now;
 
-		// Calculate how long since last frame in seconds.
+			// Update game entities.
+			this.player.onFrame(delta);
+
+			// Request next frame.
+			window.requestAnimationFrame(this.onFrame);
+		
+		}*/
 		var now = +new Date() / 1000,
-				delta = now - this.lastFrame;
-		this.lastFrame = now;
+					delta = now - this.lastFrame;
+			this.lastFrame = now;
 
-		// Update game entities.
-		this.player.onFrame(delta);
+			// Update game entities.
+			this.player.onFrame(delta);
 
-		// Request next frame.
-		window.requestAnimationFrame(this.onFrame);
+			// Request next frame.
+			window.requestAnimationFrame(this.onFrame);
+		
+			
 	};
 
 	/**
