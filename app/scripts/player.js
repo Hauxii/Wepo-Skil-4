@@ -31,8 +31,16 @@ window.Player = (function() {
 		if(e.keyCode === 32) {
 			if(started == false){
 				started = true;
+				document.getElementById('AudioIntroTheme').pause();
+				document.getElementById('AudioMainPart').currentTime = 0;
+				document.getElementById('AudioMainPart').play();
 			}
-			
+		}
+		else if(e.keyCode == 77){
+			document.getElementById('AudioIntroTheme').muted = !(document.getElementById('AudioIntroTheme').muted);
+			document.getElementById('AudioMainPart').muted = !(document.getElementById('AudioMainPart').muted);
+			document.getElementById('DeathSound').muted = !(document.getElementById('DeathSound').muted);
+			document.getElementById('FlappySound').muted = !(document.getElementById('FlappySound').muted);
 		}
 	};
 	Player.prototype.hasStarted = function(){
@@ -42,23 +50,10 @@ window.Player = (function() {
 
 	Player.prototype.onFrame = function(delta) {
 
-		/*if (Controls.keys.right) {
-			this.pos.x += delta * SPEED;
-		}
-		if (Controls.keys.left) {
-			this.pos.x -= delta * SPEED;
-		}
-		if (Controls.keys.down) {
-			this.pos.y += delta * SPEED;
-		}*/
+
 		if(started){
-			if (Controls.keys.up) {
-			/*	if(Controls.didJump()){
-					this.pos.y -= delta * (SPEED*4);
-				}
-				else{*/
-					this.pos.y -= delta * SPEED;
-				/*}*/
+			if (Controls.keys.space) {
+				this.pos.y -= delta * SPEED;
 			}
 			else{
 				this.pos.y += delta * SPEED;
@@ -76,6 +71,9 @@ window.Player = (function() {
 			this.pos.x + WIDTH > this.game.WORLD_WIDTH ||
 			this.pos.y < 0 ||
 			this.pos.y + HEIGHT > this.game.WORLD_HEIGHT) {
+			document.getElementById('AudioMainPart').pause();
+			document.getElementById('DeathSound').currentTime = 0;
+			document.getElementById('DeathSound').play();
 			return this.game.gameover();
 		}
 	};

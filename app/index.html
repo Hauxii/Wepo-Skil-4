@@ -17,8 +17,17 @@
         <!-- endbuild -->
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
-        <audio autoplay controls loop>
-             <!--<source src="/audio/IntroPartTheme.m4a" type="audio/ogg"></source>-->
+        <audio id="AudioMainPart" loop>
+             <source src="/audio/SupermanMainPartTheme.m4a" type="audio/ogg"></source>
+        </audio>
+        <audio id="AudioIntroTheme" autoplay loop>
+             <source src="/audio/IntroPartTheme.m4a" type="audio/ogg"></source>
+        </audio>
+        <audio id="DeathSound">
+             <source src="/audio/DeathSound.mp3" type="audio/ogg"></source>
+        </audio>
+        <audio id="FlappySound">
+             <source src="/audio/FlappySound.mp3" type="audio/ogg"></source>
         </audio>
         <!-- endbuild -->
     </head>

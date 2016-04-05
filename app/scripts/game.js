@@ -8,7 +8,7 @@ window.Game = (function() {
 	 * @constructor
 	 */
 	var Game = function(el) {
-		this.el = el;
+		this.el = el;	
 		this.player = new window.Player(this.el.find('.Player'), this);
 		this.isPlaying = true;
 
@@ -64,6 +64,8 @@ window.Game = (function() {
 		this.lastFrame = +new Date() / 1000;
 		window.requestAnimationFrame(this.onFrame);
 		this.isPlaying = true;
+		document.getElementById('AudioIntroTheme').currentTime = 0;
+		document.getElementById('AudioIntroTheme').play();
 	};
 
 	/**
