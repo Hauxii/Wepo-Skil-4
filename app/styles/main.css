@@ -6,7 +6,7 @@
 	background-size: 50em 10em;
 	background-repeat: repeat-x;
 	animation: animatedkryptondown 12s linear;
-	margin-top: 1850px;
+	margin-top: 520px;
 }
 
 .Worldup {
@@ -18,7 +18,7 @@
 	background-size: 50em 10em;
 	background-repeat: repeat-x;
 	animation: animatedkryptonup 12s linear;
-	margin-top: -150px;
+	margin-top: -50px;
 }
 
 .Player {

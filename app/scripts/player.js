@@ -17,7 +17,7 @@ window.Player = (function() {
 		this.el = el;
 		this.game = game;
 		this.pos = { x: 0, y: 0 };
-		this.el.css('transform', 'translateZ(0) translate(' + INITIAL_POSITION_X + 'em, ' + INITIAL_POSITION_Y + 'em)');
+		this.el.css('transform', 'translateZ(0) translate(' + 10 + 'em, ' + INITIAL_POSITION_Y + 'em)');
 	};
 
 	/**
