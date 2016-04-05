@@ -66,6 +66,11 @@ window.Game = (function() {
 		this.isPlaying = true;
 		document.getElementById('AudioIntroTheme').currentTime = 0;
 		document.getElementById('AudioIntroTheme').play();
+		/* so we do not go insane while testing */
+		document.getElementById('AudioIntroTheme').muted = true;
+		document.getElementById('AudioMainPart').muted = true;
+		document.getElementById('DeathSound').muted = true;
+		document.getElementById('FlappySound').muted = true;
 	};
 
 	/**

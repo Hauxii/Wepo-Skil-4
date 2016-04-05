@@ -38,17 +38,21 @@ window.Player = (function() {
 
 			}
 			document.getElementById('player').style.backgroundImage = "url('../images/superdown.png')";
+			document.getElementById('FlappySound').play();
 		}
 		else if(e.keyCode == 77){
 			document.getElementById('AudioIntroTheme').muted = !(document.getElementById('AudioIntroTheme').muted);
 			document.getElementById('AudioMainPart').muted = !(document.getElementById('AudioMainPart').muted);
 			document.getElementById('DeathSound').muted = !(document.getElementById('DeathSound').muted);
-			document.getElementById('FlappySound').muted = !(document.getElementById('FlappySound').muted);
+			/*document.getElementById('FlappySound').muted = !(document.getElementById('FlappySound').muted);*/
 		}
 	};
 
 	document.body.onkeyup = function (e) {
 		document.getElementById('player').style.backgroundImage = "url('../images/superup.png')";
+		/*document.getElementById('FlappySound').pause();
+		
+		document.getElementById('FlappySound').currentTime = 0;*/
 	};
 
 	Player.prototype.hasStarted = function(){
