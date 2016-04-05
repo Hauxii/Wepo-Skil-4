@@ -11,6 +11,7 @@ window.Player = (function() {
 	var INITIAL_POSITION_X = 30;
 	var INITIAL_POSITION_Y = 25;
 	var started = false;
+	var jumping = false;
 
 	var Player = function(el, game) {
 		this.el = el;
@@ -53,9 +54,14 @@ window.Player = (function() {
 
 		if(started){
 			if (Controls.keys.space) {
+				if(!jumping){
+					this.pos.y -= delta * SPEED + 8;
+					jumping = true;
+				}
 				this.pos.y -= delta * SPEED;
 			}
 			else{
+				jumping = false;
 				this.pos.y += delta * SPEED;
 			}
 
