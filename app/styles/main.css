@@ -21,6 +21,18 @@
 	margin-top: -50px;
 }
 
+.Cloud {
+	position: absolute;
+	width: 200em;
+	height: 10em;
+	background-image: url("../images/icecloud.png");
+	background-size: 20em 10em;
+	background-repeat: repeat-y;
+	animation: animatedcloud 4s linear infinite;
+	margin-top: 100px;
+	opacity: 20;
+}
+
 .Player {
 	position: absolute;
 	top: 0;
@@ -33,11 +45,15 @@
 	background-repeat: no-repeat;
 }
 
+@keyframes animatedcloud {
+	from { background-position: 100% 0; }
+	to { background-position: 0 0; }
+}
+
 @keyframes animatedkryptonup {
 	from { background-position: 0 0; }
 	to { background-position: 100% 0; }
 }
-
 
 @keyframes animatedkryptondown {
 	from { background-position: 100% 0; }
