@@ -35,7 +35,9 @@ window.Player = (function() {
 				document.getElementById('AudioIntroTheme').pause();
 				document.getElementById('AudioMainPart').currentTime = 0;
 				document.getElementById('AudioMainPart').play();
+
 			}
+			document.getElementById('player').style.backgroundImage = "url('../images/superdown.png')";
 		}
 		else if(e.keyCode == 77){
 			document.getElementById('AudioIntroTheme').muted = !(document.getElementById('AudioIntroTheme').muted);
@@ -44,9 +46,14 @@ window.Player = (function() {
 			document.getElementById('FlappySound').muted = !(document.getElementById('FlappySound').muted);
 		}
 	};
+
+	document.body.onkeyup = function (e) {
+		document.getElementById('player').style.backgroundImage = "url('../images/superup.png')";
+	};
+
 	Player.prototype.hasStarted = function(){
 		return this.started;
-	}
+	};
 
 
 	Player.prototype.onFrame = function(delta) {
