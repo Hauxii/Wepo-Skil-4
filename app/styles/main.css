@@ -1,3 +1,26 @@
+.World {
+	position: absolute;
+	width: 200em;
+	height: 10em;
+	background-image: url("../images/superkryptdown.png");
+	background-size: 50em 10em;
+	background-repeat: repeat-x;
+	animation: animatedkryptondown 12s linear;
+	margin-top: 1850px;
+}
+
+.Worldup {
+	position: absolute;
+	transform: rotate(180deg);
+	width: 200em;
+	height: 10em;
+	background-image: url("../images/superkryptdown.png");
+	background-size: 50em 10em;
+	background-repeat: repeat-x;
+	animation: animatedkryptonup 12s linear;
+	margin-top: -150px;
+}
+
 .Player {
 	position: absolute;
 	top: 0;
@@ -8,6 +31,17 @@
 	background-image: url("../images/superup.png");
 	background-size: 10em 8em;
 	background-repeat: no-repeat;
+}
+
+@keyframes animatedkryptonup {
+	from { background-position: 0 0; }
+	to { background-position: 100% 0; }
+}
+
+
+@keyframes animatedkryptondown {
+	from { background-position: 100% 0; }
+	to { background-position: 0 0; }
 }
 
 .Scoreboard {

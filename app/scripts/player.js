@@ -17,6 +17,7 @@ window.Player = (function() {
 		this.el = el;
 		this.game = game;
 		this.pos = { x: 0, y: 0 };
+		this.el.css('transform', 'translateZ(0) translate(' + INITIAL_POSITION_X + 'em, ' + INITIAL_POSITION_Y + 'em)');
 	};
 
 	/**
@@ -30,29 +31,27 @@ window.Player = (function() {
 
 	document.body.onkeydown = function (e) {
 		if(e.keyCode === 32) {
-			if(started == false){
+			if(started === false){
 				started = true;
 				document.getElementById('AudioIntroTheme').pause();
 				document.getElementById('AudioMainPart').currentTime = 0;
 				document.getElementById('AudioMainPart').play();
 
+				document.getElementById('worldup').style.animation = "animatedkryptonup 12s linear infinite";
+				document.getElementById('worlddown').style.animation = "animatedkryptondown 12s linear infinite";
 			}
 			document.getElementById('player').style.backgroundImage = "url('../images/superdown.png')";
-			document.getElementById('FlappySound').play();
 		}
-		else if(e.keyCode == 77){
+		else if(e.keyCode === 77){
 			document.getElementById('AudioIntroTheme').muted = !(document.getElementById('AudioIntroTheme').muted);
 			document.getElementById('AudioMainPart').muted = !(document.getElementById('AudioMainPart').muted);
 			document.getElementById('DeathSound').muted = !(document.getElementById('DeathSound').muted);
-			/*document.getElementById('FlappySound').muted = !(document.getElementById('FlappySound').muted);*/
+			document.getElementById('FlappySound').muted = !(document.getElementById('FlappySound').muted);
 		}
 	};
 
-	document.body.onkeyup = function (e) {
+	document.body.onkeyup = function () {
 		document.getElementById('player').style.backgroundImage = "url('../images/superup.png')";
-		/*document.getElementById('FlappySound').pause();
-		
-		document.getElementById('FlappySound').currentTime = 0;*/
 	};
 
 	Player.prototype.hasStarted = function(){
@@ -91,6 +90,8 @@ window.Player = (function() {
 			document.getElementById('AudioMainPart').pause();
 			document.getElementById('DeathSound').currentTime = 0;
 			document.getElementById('DeathSound').play();
+			document.getElementById('worldup').style.animation = "none";
+			document.getElementById('worlddown').style.animation = "none";
 			return this.game.gameover();
 		}
 	};
