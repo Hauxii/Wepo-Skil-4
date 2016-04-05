@@ -2,9 +2,12 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 5em;
-	height: 5em;
-	background: blue;
+	width: 10em;
+	height: 8em;
+	/*background: blue;*/
+	background-image: url("../images/superup.png");
+	background-size: 10em 8em;
+	background-repeat: no-repeat;
 }
 
 .Scoreboard {
@@ -60,5 +63,8 @@ height: 57.6em;
 margin-left: -51.2em;
 margin-top: -28.8em;
 overflow: hidden;
-background: red;
+/*background: red;*/
+background-image: url("../images/superback.png");
+background-size: 102.4em 57.6em;
+background-repeat: no-repeat;
 }
