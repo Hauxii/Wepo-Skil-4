@@ -15,9 +15,10 @@
 	background-image: url("../images/icecloud.png");
 	background-size: 20em 10em;
 	background-repeat: no-repeat;
-	animation: animatedcloud 20s linear infinite;
+	animation: animatedcloud 10s linear infinite;
 	margin-top: 100px;
 	opacity: 0.5;
+	-webkit-transform: translatez(0);
 }
 
 .Cloudup {
@@ -27,9 +28,10 @@
 	background-image: url("../images/icecloud.png");
 	background-size: 20em 10em;
 	background-repeat: no-repeat;
-	animation: animatedcloud 20s linear infinite;
+	animation: animatedcloud 10s linear infinite;
 	margin-top: 30px;
 	opacity: 0.7;
+	-webkit-transform: translatez(0);
 }
 
 .Player {
