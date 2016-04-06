@@ -4,7 +4,7 @@ window.World = (function() {
 	var SPEED = 30;
 	var INITIAL_POSITION_X = 120;
 	var WIDTH = 20;
-	var HEIGHT = 40;
+	var HEIGHT = 50;
 
 	var World = function(up, down, game) {
 		this.up = up;
@@ -50,8 +50,8 @@ window.World = (function() {
 	};
 
 	World.prototype.checkCollisionWithBounds = function() {
-		if(this.up.pos.x + WIDTH >= 30 && this.up.pos.x <= 35) {
-            if(this.game.player.pos.y <= this.up.pos.y + HEIGHT || this.game.player.pos.y >= this.down.pos.y) {
+		if(this.up.pos.x <= 28 || this.up.pos.x <= 38) {
+            if(this.game.player.pos.y <= this.up.pos.y + 20 || this.game.player.pos.y >= this.down.pos.y) {
                 return this.game.gameover();
             } else if(this.up.pos.x <= 30) {           
 
