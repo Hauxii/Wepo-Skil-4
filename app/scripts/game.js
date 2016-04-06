@@ -11,6 +11,7 @@ window.Game = (function() {
 		this.el = el;
 		this.player = new window.Player(this.el.find('.Player'), this);
 		this.world = new window.World(this.el.find('#world'), this.el.find('#world2'), this.el.find('.Worlddown'), this);
+		this.world2 = new window.World(this.el.find('#world3'), this.el.find('#world4'), this.el.find('.Worlddown'), this);
 
 		this.isPlaying = true;
 
@@ -49,6 +50,7 @@ window.Game = (function() {
 		// Update game entities.
 		this.player.onFrame(delta);
 		this.world.onFrame(delta);
+		this.world2.onFrame(delta);
 		// Request next frame.
 		window.requestAnimationFrame(this.onFrame);
 	};
@@ -83,7 +85,8 @@ window.Game = (function() {
 	 */
 	Game.prototype.reset = function() {
 		this.player.reset();
-		this.world.reset();
+		this.world.reset(true);
+		this.world2.reset();
 	};
 
 	/**
