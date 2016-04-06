@@ -5,7 +5,7 @@
 	background-image: url("../images/superkryptdown.png");
 	background-size: 50em 10em;
 	background-repeat: repeat-x;
-	margin-top: 510px;
+	margin-top: 460px;
 }
 
 .Cloud {
@@ -115,4 +115,15 @@ overflow: hidden;
 background-image: url("../images/superback.png");
 background-size: 102.4em 57.6em;
 background-repeat: no-repeat;
+}
+
+#CurrScoreDiv {
+	font-size:26pt;
+	font-family:times new roman;
+	font-weight:bold;
+	font-style:italic;
+	color:#ffffff;
+	width: 2%;
+    margin: 0 auto;
+  
 }
