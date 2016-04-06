@@ -58,6 +58,18 @@ window.Player = (function() {
 		document.getElementById('player').style.backgroundImage = "url('../images/superup.png')";
 	};
 
+	document.body.onmousedown = function() {
+		if(!started){
+			started = true;
+		}
+	};
+
+	document.body.ontouchstart = function (){
+		if(!started){
+			started = true;
+		}
+	};
+
 	Player.prototype.hasStarted = function(){
 		return this.started;
 	};
@@ -67,12 +79,14 @@ window.Player = (function() {
 
 
 		if(started){
-			if (Controls.keys.space) {
+			if (Controls.keys.space || Controls.keys.mouse || Controls.keys.mouse1) {
 				if(!jumping){
 					this.pos.y -= delta * SPEED + 8;
 					jumping = true;
 				}
-				this.pos.y -= delta * SPEED;
+				else{
+					this.pos.y -= delta * SPEED;
+				}
 			}
 			else{
 				jumping = false;
