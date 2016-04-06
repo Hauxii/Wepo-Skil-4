@@ -12,6 +12,7 @@ window.World = (function() {
 		this.game = game;
 		this.up.pos = { x: 0, y: 0 };
 		this.down.pos = { x: 0, y: 0};
+		this.scoreIncremented;
 	};
 
 	World.prototype.reset = function() {
@@ -50,12 +51,17 @@ window.World = (function() {
 	};
 
 	World.prototype.checkCollisionWithBounds = function() {
+
 		if(this.up.pos.x <= 28 || this.up.pos.x <= 38) {
             if(this.game.player.pos.y <= this.up.pos.y + 20 || this.game.player.pos.y >= this.down.pos.y) {
                 return this.game.gameover();
-            } else if(this.up.pos.x <= 30) {           
-
+            } else if((this.scoreIncremented === false) && this.up.pos.x <= 30) {    
+            	this.scoreIncremented = true;       
+            	this.game.player.incrementCurrScore();
             }
+        }
+        else{
+        	this.scoreIncremented = false;
         } 
 	};
 

@@ -32,6 +32,9 @@
         <audio id="FlappySound">
              <source src="/audio/FlappySound2.m4a" type="audio/ogg"></source>
         </audio>
+        <audio id="WinningSound">
+             <source src="/audio/WinningSound.m4a" type="audio/ogg"></source>
+        </audio>
         <!-- endbuild -->
     </head>
     <body>
@@ -45,6 +48,7 @@
         <div class="GameCanvas">
             <div class="Cloudup" id="icecloud"></div>
             <div class="Cloud" id="icecloud"></div>
+            <div id="CurrScoreDiv">0</div>
 
             <div id="world" class="World"></div>
             <div id="world2" class="World"></div>
@@ -57,11 +61,11 @@
             <div class="Scoreboard">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h2 class="modal-title">Game Over !</h2>
+                        <h4 class="modal-title">Game Over !</h4>
                       </div>
                       <div class="modal-body">
-                        <h4>Score:</h4>
-                        <h4>Highscore:</h4>
+                        <h5>Score: <div id="ScoreBoardCurrScore">0</div></h5>
+                        <h5>Highscore:<div id="ScoreBoardHighScore">0</div></h5>
                         <button type="button" class="btn btn-default Scoreboard-restart" data-dismiss="modal"><span class="Scoreboard-restartText">Restart</span></button>
                       </div>
                       <div class="modal-footer">
