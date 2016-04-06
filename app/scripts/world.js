@@ -17,15 +17,22 @@ window.World = (function() {
 		this.scoreIncremented;
 	};
 
-	World.prototype.reset = function() {
+	World.prototype.reset = function(firstWorld) {
 		var random = (Math.floor(Math.random() * 30) + 1) - 50;
 
-        this.up.pos.x = INITIAL_POSITION_X;
-        this.down.pos.x = INITIAL_POSITION_X;
+		if(firstWorld){
+			this.up.pos.x = INITIAL_POSITION_X + 70;
+        	this.down.pos.x = INITIAL_POSITION_X + 70;
+		}
+		else{
+			this.up.pos.x = INITIAL_POSITION_X;
+        	this.down.pos.x = INITIAL_POSITION_X;
+		}
+        
         this.ground.pos.x = 0;
 
         this.up.pos.y = random;
-        this.down.pos.y = random + 62;
+        this.down.pos.y = random + 65;
 
         this.up.css('transform', 'translateZ(0) translate(' + this.up.pos.x + 'em, ' + this.up.pos.y + 'em)');
         this.down.css('transform', 'translateZ(0) translate(' + this.down.pos.x + 'em, ' + this.down.pos.y + 'em)');
