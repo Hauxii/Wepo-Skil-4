@@ -6,19 +6,7 @@
 	background-size: 50em 10em;
 	background-repeat: repeat-x;
 	animation: animatedkryptondown 12s linear infinite;
-	margin-top: 520px;
-}
-
-.Worldup {
-	position: absolute;
-	transform: rotate(180deg);
-	width: 200em;
-	height: 10em;
-	background-image: url("../images/superkryptdown.png");
-	background-size: 50em 10em;
-	background-repeat: repeat-x;
-	animation: animatedkryptonup 12s linear infinite;
-	margin-top: -50px;
+	margin-top: 510px;
 }
 
 .Cloud {
@@ -29,7 +17,7 @@
 	background-size: 20em 10em;
 	background-repeat: no-repeat;
 	animation: animatedcloud 4s linear infinite;
-	margin-top: 400px;
+	margin-top: 100px;
 	opacity: 0.5;
 }
 
@@ -41,7 +29,7 @@
 	background-size: 20em 10em;
 	background-repeat: no-repeat;
 	animation: animatedcloud 4s linear infinite;
-	margin-top: 50px;
+	margin-top: 30px;
 	opacity: 0.7;
 }
 
@@ -61,21 +49,16 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 8em;
-	height: 100em;
+	width: 10em;
+	height: 50em;
 	background-image: url("../images/superkrypt.png");
-	background-size: 8em 100em;
+	background-size: 10em 50em;
 	background-repeat: no-repeat;
 }
 
 @keyframes animatedcloud {
 	from { background-position: 100% 0; }
 	to { background-position: 0 0; }
-}
-
-@keyframes animatedkryptonup {
-	from { background-position: 0 0; }
-	to { background-position: 100% 0; }
 }
 
 @keyframes animatedkryptondown {
