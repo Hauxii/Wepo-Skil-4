@@ -1,4 +1,4 @@
-.World {
+.Worlddown {
 	position: absolute;
 	width: 200em;
 	height: 10em;
@@ -57,6 +57,17 @@
 	background-repeat: no-repeat;
 }
 
+.World {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 8em;
+	height: 100em;
+	background-image: url("../images/superkrypt.png");
+	background-size: 8em 100em;
+	background-repeat: no-repeat;
+}
+
 @keyframes animatedcloud {
 	from { background-position: 100% 0; }
 	to { background-position: 0 0; }
@@ -80,10 +91,11 @@
 	width: 40em;
 	margin-left: -20em;
 	box-sizing: border-box;
-	background: purple;
+	background: gray;
 	text-align: center;
 	-webkit-transform: translate(0, -40em);
 	-webkit-transition: -webkit-transform 0.5s;
+	opacity: 0.6;
 }
 
 /**
@@ -94,17 +106,14 @@
 }
 
 .Scoreboard-restart {
-	margin-top: 20em;
+	margin-top: 2em;
 	font-size: inherit;
 	padding: 0.4em 1.5em;
-	border: 0.2em solid white;
-	background: none;
 	cursor: pointer;
 }
 .Scoreboard-restartText {
-font-family: 'Comic Sans MS', serif;
 font-size: 2.4em;
-color: white;
+color: grey;
 }
 body {
 background: black;

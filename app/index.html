@@ -9,6 +9,8 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <link rel="shortcut icon" href="/favicon.ico">
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!-- build:css styles/vendor.css -->
         <!-- bower:css -->
@@ -35,21 +37,31 @@
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
         <div class="GameCanvas">
             <div class="Cloudup" id="icecloud"></div>
             <div class="Cloud" id="icecloud"></div>
-            <div class="World" id="worlddown"></div>
+            <div class="Worlddown" id="worlddown"></div>
             <div class="Worldup" id="worldup"></div>
 
             <div id="player" class="Player"></div>
-
-            
+            <div id="world" class="World"></div>
             
             <div class="Scoreboard">
-                <button class="Scoreboard-restart">
-                    <span class="Scoreboard-restartText">Restart</span>
-                </button>
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 class="modal-title">Game Over !</h2>
+                      </div>
+                      <div class="modal-body">
+                        <h4>Score:</h4>
+                        <h4>Highscore:</h4>
+                        <button type="button" class="btn btn-default Scoreboard-restart" data-dismiss="modal"><span class="Scoreboard-restartText">Restart</span></button>
+                      </div>
+                      <div class="modal-footer">
+                          <p>Press "m" to mute the sound...</p>
+                      </div>
+                    </div>
             </div>
         </div>
 
