@@ -17,7 +17,7 @@ window.Player = (function() {
 		this.el = el;
 		this.game = game;
 		this.pos = { x: 0, y: 0 };
-		this.el.css('transform', 'translateZ(0) translate(' + 10 + 'em, ' + INITIAL_POSITION_Y + 'em)');
+		this.el.css('transform', 'translateZ(0) translate(' + INITIAL_POSITION_X + 'em, ' + INITIAL_POSITION_Y + 'em)');
 	};
 
 	/**
@@ -27,6 +27,10 @@ window.Player = (function() {
 		this.pos.x = INITIAL_POSITION_X;
 		this.pos.y = INITIAL_POSITION_Y;
 		started = false;
+		
+		this.el.css('transform', 'translateZ(0) translate(' + INITIAL_POSITION_X + 'em, ' + INITIAL_POSITION_Y + 'em)');
+		document.getElementById('worldup').style.animation = "animatedkryptonup 12s linear infinite";
+		document.getElementById('worlddown').style.animation = "animatedkryptondown 12s linear infinite";
 	};
 
 	document.body.onkeydown = function (e) {
