@@ -14,6 +14,8 @@ window.Player = (function() {
 	var ROTATION = 0;
 	var started = false;
 	var jumping = false;
+	var highScore = 0;
+	var currentScore = 0;
 
 	var Player = function(el, game) {
 		this.playing = false;
@@ -32,6 +34,8 @@ window.Player = (function() {
 		started = false;
 		ROTATION = 0;
 		this.playing = false;
+		currentScore = 0;
+		document.getElementById('CurrScoreDiv').innerHTML=0;
 		
 		this.el.css('transform', 'translateZ(0) translate(' + INITIAL_POSITION_X + 'em, ' + INITIAL_POSITION_Y + 'em)' + 'rotate(' + ROTATION + 'deg)');
 		document.getElementById('worlddown').style.animation = "animatedkryptondown 12s linear infinite";
@@ -55,6 +59,7 @@ window.Player = (function() {
 			document.getElementById('AudioMainPart').muted = !(document.getElementById('AudioMainPart').muted);
 			document.getElementById('DeathSound').muted = !(document.getElementById('DeathSound').muted);
 			document.getElementById('FlappySound').muted = !(document.getElementById('FlappySound').muted);
+			document.getElementById('WinningSound').muted = !(document.getElementById('WinningSound').muted);
 		}
 	};
 
@@ -126,9 +131,25 @@ window.Player = (function() {
 			document.getElementById('DeathSound').currentTime = 0;
 			document.getElementById('DeathSound').play();
 			document.getElementById('worlddown').style.animation = "none";
+			if(currentScore > highScore){
+				highScore = currentScore;
+			}
 			this.playing = false;
 			return this.game.gameover();
 		}
+	};
+
+	Player.prototype.incrementCurrScore = function(){
+		currentScore += 1;
+		document.getElementById('WinningSound').play();
+		document.getElementById('CurrScoreDiv').innerHTML=currentScore;
+		//update something on screen
+	};
+	Player.prototype.getCurrScore = function(){
+		return currentScore;
+	};
+	Player.prototype.getHighScore = function(){
+		return highScore;
 	};
 
 	return Player;

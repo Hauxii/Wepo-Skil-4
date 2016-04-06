@@ -12,6 +12,7 @@ window.World = (function() {
 		this.game = game;
 		this.up.pos = { x: 0, y: 0 };
 		this.down.pos = { x: 0, y: 0};
+		this.scoreIncremented;
 	};
 
 	World.prototype.reset = function() {
@@ -55,19 +56,15 @@ window.World = (function() {
             if((this.game.player.pos.y <= this.up.pos.y + HEIGHT - 3 || this.game.player.pos.y + 2 >= this.down.pos.y)) {
                 return this.game.gameover();
             }
+            else if((this.scoreIncremented === false) && this.up.pos.x <= 30) {    
+            	this.scoreIncremented = true;       
+            	this.game.player.incrementCurrScore();
+            }
         }
-		/*if(this.game.player.pos.x >= (this.up.pos.x + 1) || this.game.player.pos.x >= (this.up.pos.x - 8.5)) {
-            if(this.game.player.pos.y <= (this.up.pos.y + HEIGHT + 1) && this.game.player.pos.x >= (this.up.pos.x + 1) && this.game.player.pos.x >= (this.up.pos.x - 8.5)){
-            	return this.game.gameover();
-            }
-			
-
-            if(this.game.player.pos.y <= this.up.pos.y || this.game.player.pos.y >= this.down.pos.y) {
-                return this.game.gameover();
-            } else if(this.up.pos.x <= 30) {           
-
-            }
-        } */
+        else{
+        	this.scoreIncremented = false;	
+        }
+         
 	};
 
 	return World;
