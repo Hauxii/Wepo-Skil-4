@@ -6,12 +6,14 @@ window.World = (function() {
 	var WIDTH = 20;
 	var HEIGHT = 50;
 
-	var World = function(up, down, game) {
+	var World = function(up, down, ground, game) {
 		this.up = up;
 		this.down = down;
+		this.ground = ground;
 		this.game = game;
 		this.up.pos = { x: 0, y: 0 };
 		this.down.pos = { x: 0, y: 0};
+		this.ground.pos = { x: 0, y: 0};
 	};
 
 	World.prototype.reset = function() {
@@ -19,16 +21,18 @@ window.World = (function() {
 
         this.up.pos.x = INITIAL_POSITION_X;
         this.down.pos.x = INITIAL_POSITION_X;
+        this.ground.pos.x = 0;
 
         this.up.pos.y = random;
         this.down.pos.y = random + 70;
 
         this.up.css('transform', 'translateZ(0) translate(' + this.up.pos.x + 'em, ' + this.up.pos.y + 'em)');
         this.down.css('transform', 'translateZ(0) translate(' + this.down.pos.x + 'em, ' + this.down.pos.y + 'em)');
+        this.ground.css('transform', 'translateZ(0) translate(' + this.ground.pos.x + 'em, ' + this.ground.pos.y + 'em)');
 	};
 
 	World.prototype.onFrame = function(delta) {
-		console.log(this.game.player.playing);
+
 		if(this.game.player.playing){
 			this.checkCollisionWithBounds();
 
@@ -36,9 +40,13 @@ window.World = (function() {
 
 			this.up.pos.x -= delta * SPEED;
 			this.down.pos.x -= delta * SPEED;
+			this.ground.pos.x -= (delta * SPEED);
+
 
 			this.up.css('transform', 'translateZ(0) translate(' + this.up.pos.x + 'em, ' + this.up.pos.y + 'em)');
 			this.down.css('transform', 'translateZ(0) translate(' + this.down.pos.x + 'em, ' + this.down.pos.y + 'em)');
+			this.ground.css('transform', 'translateZ(0) translate(' + this.ground.pos.x + 'em, ' + this.ground.pos.y + 'em)');
+
 		}
 		
 	};
