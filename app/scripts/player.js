@@ -6,10 +6,12 @@ window.Player = (function() {
 	// All these constants are in em's, multiply by 10 pixels
 	// for 1024x576px canvas.
 	var SPEED = 60; // * 10 pixels per second
+	var FALLSPEED = 0;
 	var WIDTH = 5;
 	var HEIGHT = 5;
 	var INITIAL_POSITION_X = 30;
 	var INITIAL_POSITION_Y = 25;
+	var ROTATION = 0;
 	var started = false;
 	var jumping = false;
 
@@ -27,8 +29,9 @@ window.Player = (function() {
 		this.pos.x = INITIAL_POSITION_X;
 		this.pos.y = INITIAL_POSITION_Y;
 		started = false;
+		ROTATION = 0;
 		
-		this.el.css('transform', 'translateZ(0) translate(' + INITIAL_POSITION_X + 'em, ' + INITIAL_POSITION_Y + 'em)');
+		this.el.css('transform', 'translateZ(0) translate(' + INITIAL_POSITION_X + 'em, ' + INITIAL_POSITION_Y + 'em)' + 'rotate(' + ROTATION + 'deg)');
 		document.getElementById('worldup').style.animation = "animatedkryptonup 12s linear infinite";
 		document.getElementById('worlddown').style.animation = "animatedkryptondown 12s linear infinite";
 	};
@@ -83,22 +86,33 @@ window.Player = (function() {
 		if(started){
 			if (Controls.keys.space || Controls.keys.mouse || Controls.keys.mouse1) {
 				if(!jumping){
+					if(ROTATION > -45){
+						ROTATION = -45;
+					}
+					FALLSPEED = 0;
 					this.pos.y -= delta * SPEED + 8;
 					jumping = true;
 				}
 				else{
+					if(ROTATION > -45){
+						ROTATION -= 10;
+					}
 					this.pos.y -= delta * SPEED;
 				}
 			}
 			else{
+				if(ROTATION < 90){
+					ROTATION += 3;
+				}
 				jumping = false;
-				this.pos.y += delta * SPEED;
+				FALLSPEED += 3; 
+				this.pos.y += delta * FALLSPEED;
 			}
 
 			this.checkCollisionWithBounds();
 
 			// Update UI
-			this.el.css('transform', 'translateZ(0) translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
+			this.el.css('transform', 'translateZ(0) translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)' + 'rotate(' + ROTATION + 'deg)');
 		}
 	};
 
