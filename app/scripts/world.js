@@ -54,6 +54,7 @@ window.World = (function() {
 
 		if(this.up.pos.x <= 28 || this.up.pos.x <= 38) {
             if(this.game.player.pos.y <= this.up.pos.y + 20 || this.game.player.pos.y >= this.down.pos.y) {
+            	this.game.player.playerDeath();
                 return this.game.gameover();
             } else if((this.scoreIncremented === false) && this.up.pos.x <= 30) {    
             	this.scoreIncremented = true;       

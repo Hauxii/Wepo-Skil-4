@@ -127,14 +127,7 @@ window.Player = (function() {
 			this.pos.y = 0;
 		}
 		if (this.pos.y + HEIGHT > this.game.WORLD_HEIGHT) {
-			document.getElementById('AudioMainPart').pause();
-			document.getElementById('DeathSound').currentTime = 0;
-			document.getElementById('DeathSound').play();
-			document.getElementById('worlddown').style.animation = "none";
-			if(currentScore > highScore){
-				highScore = currentScore;
-			}
-			this.playing = false;
+			this.playerDeath();
 			return this.game.gameover();
 		}
 	};
@@ -144,6 +137,17 @@ window.Player = (function() {
 		document.getElementById('WinningSound').play();
 		document.getElementById('CurrScoreDiv').innerHTML=currentScore;
 		//update something on screen
+	};
+	Player.prototype.playerDeath = function(){
+		document.getElementById('worlddown').style.animation = "none";
+		document.getElementById('AudioMainPart').pause();
+		document.getElementById('DeathSound').currentTime = 0;
+		document.getElementById('DeathSound').play();
+			
+		if(currentScore > highScore){
+			highScore = currentScore;
+		}
+		this.playing = false;
 	};
 	Player.prototype.getCurrScore = function(){
 		return currentScore;
