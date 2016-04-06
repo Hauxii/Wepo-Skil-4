@@ -10,7 +10,7 @@ window.Game = (function() {
 	var Game = function(el) {
 		this.el = el;
 		this.player = new window.Player(this.el.find('.Player'), this);
-		this.world = new window.World(this.el.find('#world'), this.el.find('#world2'), this);
+		this.world = new window.World(this.el.find('#world'), this.el.find('#world2'), this.el.find('.Worlddown'), this);
 
 		this.isPlaying = true;
 
