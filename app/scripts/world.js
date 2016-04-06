@@ -15,20 +15,19 @@ window.World = (function() {
 	};
 
 	World.prototype.reset = function() {
-		var random = (Math.floor(Math.random() * 30) + 1) - 35;
+		var random = (Math.floor(Math.random() * 30) + 1) - 50;
 
         this.up.pos.x = INITIAL_POSITION_X;
         this.down.pos.x = INITIAL_POSITION_X;
 
         this.up.pos.y = random;
-        this.down.pos.y = random + 70;
+        this.down.pos.y = random + 62;
 
         this.up.css('transform', 'translateZ(0) translate(' + this.up.pos.x + 'em, ' + this.up.pos.y + 'em)');
         this.down.css('transform', 'translateZ(0) translate(' + this.down.pos.x + 'em, ' + this.down.pos.y + 'em)');
 	};
 
 	World.prototype.onFrame = function(delta) {
-		console.log(this.game.player.playing);
 		if(this.game.player.playing){
 			this.checkCollisionWithBounds();
 
@@ -50,13 +49,25 @@ window.World = (function() {
 	};
 
 	World.prototype.checkCollisionWithBounds = function() {
-		if(this.up.pos.x <= 28 || this.up.pos.x <= 38) {
-            if(this.game.player.pos.y <= this.up.pos.y + 20 || this.game.player.pos.y >= this.down.pos.y) {
+		
+		if(this.up.pos.x  >= 25 && this.up.pos.x <= 38) {
+            // Check if pipe is hit
+            if((this.game.player.pos.y <= this.up.pos.y + HEIGHT - 3 || this.game.player.pos.y + 2 >= this.down.pos.y)) {
+                return this.game.gameover();
+            }
+        }
+		/*if(this.game.player.pos.x >= (this.up.pos.x + 1) || this.game.player.pos.x >= (this.up.pos.x - 8.5)) {
+            if(this.game.player.pos.y <= (this.up.pos.y + HEIGHT + 1) && this.game.player.pos.x >= (this.up.pos.x + 1) && this.game.player.pos.x >= (this.up.pos.x - 8.5)){
+            	return this.game.gameover();
+            }
+			
+
+            if(this.game.player.pos.y <= this.up.pos.y || this.game.player.pos.y >= this.down.pos.y) {
                 return this.game.gameover();
             } else if(this.up.pos.x <= 30) {           
 
             }
-        } 
+        } */
 	};
 
 	return World;
