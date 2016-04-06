@@ -66,7 +66,13 @@ window.Game = (function() {
 		this.isPlaying = true;
 		document.getElementById('AudioIntroTheme').currentTime = 0;
 		document.getElementById('AudioIntroTheme').play();
+		document.getElementById('FlappySound').playbackRate= 2;
 		/* so we do not go insane while testing */
+
+		document.getElementById('AudioIntroTheme').volume = 0.1;
+		document.getElementById('AudioMainPart').volume = 0.1;
+		document.getElementById('DeathSound').volume = 0.1;
+
 		document.getElementById('AudioIntroTheme').muted = true;
 		document.getElementById('AudioMainPart').muted = true;
 		document.getElementById('DeathSound').muted = true;

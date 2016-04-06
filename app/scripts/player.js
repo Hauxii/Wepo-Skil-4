@@ -40,6 +40,7 @@ window.Player = (function() {
 				document.getElementById('worldup').style.animation = "animatedkryptonup 12s linear infinite";
 				document.getElementById('worlddown').style.animation = "animatedkryptondown 12s linear infinite";
 			}
+			document.getElementById('FlappySound').play();
 			document.getElementById('player').style.backgroundImage = "url('../images/superdown.png')";
 		}
 		else if(e.keyCode === 77){
@@ -51,6 +52,7 @@ window.Player = (function() {
 	};
 
 	document.body.onkeyup = function () {
+
 		document.getElementById('player').style.backgroundImage = "url('../images/superup.png')";
 	};
 
