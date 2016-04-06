@@ -67,7 +67,6 @@ window.World = (function() {
 	World.prototype.checkCollisionWithBounds = function() {
 
 		if(this.up.pos.x  >= 25 && this.up.pos.x <= 38) {
-            // Check if pipe is hit
             if((this.game.player.pos.y <= this.up.pos.y + HEIGHT - 3 || this.game.player.pos.y + 2 >= this.down.pos.y)) {
                 this.game.player.playerDeath();
                 return this.game.gameover();
