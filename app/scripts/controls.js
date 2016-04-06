@@ -11,7 +11,9 @@ window.Controls = (function() {
         38: 'up',
         39: 'right',
         40: 'down',
-        77: 'mute'
+        77: 'mute',
+        0: 'mouse',
+        1: 'mouse1'
     };
 
     /**
@@ -25,7 +27,31 @@ window.Controls = (function() {
         this.keys = {};
         $(window)
             .on('keydown', this._onKeyDown.bind(this))
-            .on('keyup', this._onKeyUp.bind(this));
+            .on('keyup', this._onKeyUp.bind(this))
+            .on('mousedown', this._onMouseDown.bind(this))
+            .on('mouseup', this._onMouseUp.bind(this))
+            .on('touchstart', this._onTouchStart.bind(this))
+            .on('touchend', this._onTouchEnd.bind(this));
+    };
+
+    Controls.prototype._onMouseDown = function() {
+        this.keys.mouse = true;
+        this.keys.mouse1 = true;
+    };
+
+    Controls.prototype._onMouseUp = function() {
+        this.keys.mouse = false;
+        this.keys.mouse1 = false;
+    };
+
+    Controls.prototype._onTouchStart = function() {
+        this.keys.mouse = true;
+        this.keys.mouse1 = true;
+    };
+
+    Controls.prototype._onTouchEnd = function() {
+        this.keys.mouse = false;
+        this.keys.mouse1 = false;
     };
 
     Controls.prototype._onKeyDown = function(e) {

@@ -17,7 +17,7 @@ window.Player = (function() {
 		this.el = el;
 		this.game = game;
 		this.pos = { x: 0, y: 0 };
-		this.el.css('transform', 'translateZ(0) translate(' + 10 + 'em, ' + INITIAL_POSITION_Y + 'em)');
+		this.el.css('transform', 'translateZ(0) translate(' + INITIAL_POSITION_X + 'em, ' + INITIAL_POSITION_Y + 'em)');
 	};
 
 	/**
@@ -27,6 +27,10 @@ window.Player = (function() {
 		this.pos.x = INITIAL_POSITION_X;
 		this.pos.y = INITIAL_POSITION_Y;
 		started = false;
+		
+		this.el.css('transform', 'translateZ(0) translate(' + INITIAL_POSITION_X + 'em, ' + INITIAL_POSITION_Y + 'em)');
+		document.getElementById('worldup').style.animation = "animatedkryptonup 12s linear infinite";
+		document.getElementById('worlddown').style.animation = "animatedkryptondown 12s linear infinite";
 	};
 
 	document.body.onkeydown = function (e) {
@@ -56,6 +60,18 @@ window.Player = (function() {
 		document.getElementById('player').style.backgroundImage = "url('../images/superup.png')";
 	};
 
+	document.body.onmousedown = function() {
+		if(!started){
+			started = true;
+		}
+	};
+
+	document.body.ontouchstart = function (){
+		if(!started){
+			started = true;
+		}
+	};
+
 	Player.prototype.hasStarted = function(){
 		return this.started;
 	};
@@ -65,12 +81,14 @@ window.Player = (function() {
 
 
 		if(started){
-			if (Controls.keys.space) {
+			if (Controls.keys.space || Controls.keys.mouse || Controls.keys.mouse1) {
 				if(!jumping){
 					this.pos.y -= delta * SPEED + 8;
 					jumping = true;
 				}
-				this.pos.y -= delta * SPEED;
+				else{
+					this.pos.y -= delta * SPEED;
+				}
 			}
 			else{
 				jumping = false;

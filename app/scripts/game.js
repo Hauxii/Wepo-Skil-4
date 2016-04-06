@@ -8,7 +8,7 @@ window.Game = (function() {
 	 * @constructor
 	 */
 	var Game = function(el) {
-		this.el = el;	
+		this.el = el;
 		this.player = new window.Player(this.el.find('.Player'), this);
 		this.isPlaying = true;
 
@@ -42,16 +42,12 @@ window.Game = (function() {
 		
 		}*/
 		var now = +new Date() / 1000,
-					delta = now - this.lastFrame;
-			this.lastFrame = now;
-
-			// Update game entities.
-			this.player.onFrame(delta);
-
-			// Request next frame.
-			window.requestAnimationFrame(this.onFrame);
-		
-			
+			delta = now - this.lastFrame;
+		this.lastFrame = now;
+		// Update game entities.
+		this.player.onFrame(delta);
+		// Request next frame.
+		window.requestAnimationFrame(this.onFrame);
 	};
 
 	/**
