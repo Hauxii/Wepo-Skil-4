@@ -1,36 +1,48 @@
 window.World = (function() {
 	'use strict';
 
-	var INITIAL_POSITION_X = 60;
-	var INITIAL_POSITION_Y = 20;
-	var WIDTH = 10;
-	var HEIGHT = 100;
-	var started = true;
+	var SPEED = 30;
+	var INITIAL_POSITION_X = 120;
+	var WIDTH = 20;
 
-	var pipeId = 0;
-	var gap = 120;
-
-
-	var World = function(el, game) {
-		this.el = el;
+	var World = function(up, down, game) {
+		this.up = up;
+		this.down = down;
 		this.game = game;
-		this.pos = { x: 0, y: 0 };
+		this.up.pos = { x: 0, y: 0 };
+		this.down.pos = { x: 0, y: 0};
 	};
 
 	World.prototype.reset = function() {
-		this.pos.x = INITIAL_POSITION_X;
-		this.pos.y = INITIAL_POSITION_Y;
-	};
+		var random = (Math.floor(Math.random() * 30) + 1) - 35;
 
-	World.prototype.hasStarted = function(){
-		return this.started;
-	};
+        this.up.pos.x = INITIAL_POSITION_X;
+        this.down.pos.x = INITIAL_POSITION_X;
 
+        this.up.pos.y = random;
+        this.down.pos.y = random + 70;
+
+        this.up.css('transform', 'translateZ(0) translate(' + this.up.pos.x + 'em, ' + this.up.pos.y + 'em)');
+        this.down.css('transform', 'translateZ(0) translate(' + this.down.pos.x + 'em, ' + this.down.pos.y + 'em)');
+	};
 
 	World.prototype.onFrame = function(delta) {
-		if(started){
-			this.checkCollisionWithBounds();
-			this.el.css('transform', 'translateZ(0) translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
+		console.log(this.game.player.playing);
+		if(this.game.player.playing){
+			this.checker();
+
+			this.up.pos.x -= delta * SPEED;
+			this.down.pos.x -= delta * SPEED;
+
+			this.up.css('transform', 'translateZ(0) translate(' + this.up.pos.x + 'em, ' + this.up.pos.y + 'em)');
+			this.down.css('transform', 'translateZ(0) translate(' + this.down.pos.x + 'em, ' + this.down.pos.y + 'em)');
+		}
+		
+	};
+
+	World.prototype.checker = function (){
+		if(this.up.pos.x < -WIDTH){
+			return this.reset();
 		}
 	};
 

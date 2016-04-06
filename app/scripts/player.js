@@ -16,6 +16,7 @@ window.Player = (function() {
 	var jumping = false;
 
 	var Player = function(el, game) {
+		this.playing = false;
 		this.el = el;
 		this.game = game;
 		this.pos = { x: 0, y: 0 };
@@ -30,9 +31,9 @@ window.Player = (function() {
 		this.pos.y = INITIAL_POSITION_Y;
 		started = false;
 		ROTATION = 0;
+		this.playing = false;
 		
 		this.el.css('transform', 'translateZ(0) translate(' + INITIAL_POSITION_X + 'em, ' + INITIAL_POSITION_Y + 'em)' + 'rotate(' + ROTATION + 'deg)');
-		document.getElementById('worldup').style.animation = "animatedkryptonup 12s linear infinite";
 		document.getElementById('worlddown').style.animation = "animatedkryptondown 12s linear infinite";
 	};
 
@@ -44,7 +45,6 @@ window.Player = (function() {
 				document.getElementById('AudioMainPart').currentTime = 0;
 				document.getElementById('AudioMainPart').play();
 
-				document.getElementById('worldup').style.animation = "animatedkryptonup 12s linear infinite";
 				document.getElementById('worlddown').style.animation = "animatedkryptondown 12s linear infinite";
 			}
 			document.getElementById('FlappySound').play();
@@ -90,8 +90,9 @@ window.Player = (function() {
 						ROTATION = -45;
 					}
 					FALLSPEED = 0;
-					this.pos.y -= delta * SPEED + 8;
+					this.pos.y -= delta * SPEED + 5;
 					jumping = true;
+					this.playing = true;
 				}
 				else{
 					if(ROTATION > -45){
@@ -124,8 +125,8 @@ window.Player = (function() {
 			document.getElementById('AudioMainPart').pause();
 			document.getElementById('DeathSound').currentTime = 0;
 			document.getElementById('DeathSound').play();
-			document.getElementById('worldup').style.animation = "none";
 			document.getElementById('worlddown').style.animation = "none";
+			this.playing = false;
 			return this.game.gameover();
 		}
 	};
